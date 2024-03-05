@@ -1,0 +1,35 @@
+from pynq.overlays.base import BaseOverlay
+base = BaseOverlay("base.bit")
+import cv2
+import numpy as np
+
+from pynq.lib.video import *
+
+hdmi_in = base.video.hdmi_in
+hdmi_out = base.video.hdmi_out
+Mode = VideoMode(640,480,24)
+hdmi_in.configure(PIXEL_RGB)
+print(hdmi_in.mode)
+hdmi_out.configure(Mode, PIXEL_RGB)
+hdmi_in.start()
+hdmi_out.start()
+#print("hdmi init done")
+
+frame = hdmi_in.readframe()
+
+while True:
+    print("in cycle")
+    inframe = hdmi_in.readframe()
+    print("read done")
+    outframe = hdmi_out.newframe()
+    outframe[0:480,0:640,:]=0
+    outframe[0:480,0:640,0]=inframe[0:480,0:640,0]
+    
+    hdmi_out.writeframe(outframe)
+    print("cycle test")
+    pass
+
+hdmi_out.stop()
+hdmi_in.stop()
+del hdmi_in, hdmi_out
+print("release done")

@@ -1,0 +1,19 @@
+function [mat_rot]=get_mat(offset,angle,length,twist)
+tmp_1=[cos(angle),-1*sin(angle),0,0;
+    sin(angle),cos(angle),0,0;
+    0,0,1,0;
+    0,0,0,1];
+tmp_2=[1,0,0,0;
+    0,1,0,0;
+    0,0,1,offset;
+    0,0,0,1];
+tmp_3=[1,0,0,length;
+    0,1,0,0;
+    0,0,1,0;
+    0,0,0,1];
+tmp_4=[1,0,0,0;
+    0,cos(twist),-1*sin(twist),0;
+    0,sin(twist),cos(twist),0;
+    0,0,0,1];
+mat_rot=tmp_1*tmp_2*tmp_3*tmp_4;
+end

@@ -1,0 +1,7 @@
+{
+    "programmer": "AVR ISP",
+    "board": "arduino:avr:pro",
+    "configuration": "cpu=16MHzatmega328",
+    "sketch": "encoder_read.ino",
+    "port": "COM24"
+}

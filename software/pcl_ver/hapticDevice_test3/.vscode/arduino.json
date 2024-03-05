@@ -1,0 +1,7 @@
+{
+    "programmer": "AVR ISP",
+    "board": "arduino:avr:pro",
+    "sketch": "hapticDevice_test3.ino",
+    "port": "COM24",
+    "configuration": "cpu=16MHzatmega328"
+}
